@@ -9,12 +9,8 @@
 		search(searchType, userInput) - Returns List of type Movie returned from the search 'userInput'. searchType is a string either "title" for searching by title or "id" for searching by IMDB ID. If no data is found then it will return false.
 */
 
-using System;
 using System.Net;
-using System.IO;
 using System.Collections.Generic;
-using System.Xml;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 public class Movie // the movie class for containing information about a movie
@@ -38,33 +34,45 @@ public class API
         using (WebClient web = new WebClient())
         {
             string jsonString = "";
+            JObject json;
 
             switch (searchType)
             {
                 case "title":
                     jsonString = web.DownloadString("http://www.omdbapi.com/?s=" + userInput + "&apikey=ffa0df85");
+
+                    json = JObject.Parse(jsonString);
+
+                    foreach (var result in json["Search"])
+                    {
+                        Movie movTitle = new Movie();
+                        movTitle.Poster = result["Poster"].ToString();
+                        movTitle.Title = result["Title"].ToString();
+                        movTitle.Year = result["Year"].ToString();
+                        movTitle.imdbID = result["imdbID"].ToString();
+                        movTitle.Type = result["Type"].ToString();
+                        results.Add(movTitle);
+                    }
+
                     break;
 
                 case "id":
                     jsonString = web.DownloadString("http://www.omdbapi.com/?i=" + userInput + "&apikey=ffa0df85");
+
+                    json = JObject.Parse(jsonString);
+
+                    Movie movID = new Movie();
+                    movID.Poster = json["Poster"].ToString();
+                    movID.Title = json["Title"].ToString();
+                    movID.Year = json["Year"].ToString();
+                    movID.imdbID = json["imdbID"].ToString();
+                    movID.Type = json["Type"].ToString();
+                    results.Add(movID);
                     break;
 
                 default:
                     //error
                     break;
-            }
-
-            JObject json = JObject.Parse(jsonString);
-
-            foreach (var result in json["Search"])
-            {
-                Movie movie = new Movie();
-                movie.Poster = result["Poster"].ToString();
-                movie.Title = result["Title"].ToString();
-                movie.Year = result["Year"].ToString();
-                movie.imdbID = result["imdbID"].ToString();
-                movie.Type = result["Type"].ToString();
-                results.Add(movie);
             }
         }
         return results;

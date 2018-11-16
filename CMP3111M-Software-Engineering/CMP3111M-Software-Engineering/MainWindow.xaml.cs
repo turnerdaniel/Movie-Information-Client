@@ -27,7 +27,9 @@ namespace CMP3111M_Software_Engineering
 			// The following is an example of how to use the API class
 			API api = new API();
 			List<Movie> searchResults = api.search("title", "Hello World");
-		}
+
+            List<Movie> idResult = api.search("id", "tt0076759");
+        }
 	}
 
 	
