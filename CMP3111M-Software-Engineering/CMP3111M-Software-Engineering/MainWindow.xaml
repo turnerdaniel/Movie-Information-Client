@@ -29,16 +29,25 @@
             <Label BorderBrush="Aqua" BorderThickness="2" Content="Label" HorizontalAlignment="Left" Margin="1024,204,0,0" VerticalAlignment="Top" Height="144" Width="255"/>
             <Label BorderBrush="Aqua" BorderThickness="2" Content="Label" HorizontalAlignment="Left" Margin="668,204,0,0" VerticalAlignment="Top" Height="144" Width="255"/>
 
-
-
-
-            <ListView x:Name="apiData" HorizontalAlignment="Left" Height="424" Margin="310,204,0,0" VerticalAlignment="Top" Width="969">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <ListBox x:Name="lbMovies" HorizontalAlignment="Left" Height="424" Margin="310,204,0,0" VerticalAlignment="Top" Width="969">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Source="https://www.ikea.com/PIAimages/0355482_PE547815_S5.JPG" MaxWidth="100" MaxHeight="101"  />
+                            <TextBlock Text="{Binding Title}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Year}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding imdbID}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Type}" HorizontalAlignment="center" />
+                            <Button Content="+ Wishlist"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
 
 

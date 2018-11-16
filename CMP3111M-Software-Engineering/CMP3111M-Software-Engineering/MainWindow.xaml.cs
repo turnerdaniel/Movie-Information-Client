@@ -52,22 +52,44 @@ namespace MovieDatabase
 
         public void searchAndDisplay()
         {
+			//list with movie results
+            //List<Movie> searchResults = api.getSearch("title", Get_SearchBar_Data());
 
-            List<Movie> searchResults = api.getSearch("title", Get_SearchBar_Data());
+			Movie mov = new Movie();
+			mov.Title = "test";
+			mov.Year = "2018";
+			mov.imdbID = "ssssss";
+			mov.Type = "2";
 
-           
-            apiData.ItemsSource = searchResults;
+			Movie mov2 = new Movie();
+			mov2.Title = "test2";
+			mov2.Year = "2019";
+			mov2.imdbID = "tttttt";
 
-            //Movie movie = new Movie();
-            //movie.Title = node.Attributes["Title"].Value;
-            //movie.Year = node.Attributes["Year"].Value;
-            //movie.imdbID = node.Attributes["imdbID"].Value;
-            //movie.Type = node.Attributes["Type"].Value;
-            //movie.Poster = node.Attributes["Poster"].Value;
+			Movie mov3 = new Movie();
+			mov3.Title = "test";
+			mov3.Year = "2018";
+			mov3.imdbID = "ssssss";
+			mov3.Type = "2";
+
+			List<Movie> movies = new List<Movie>();
+			movies.Add(mov);
+			movies.Add(mov2);
+			movies.Add(mov3);
+
+			lbMovies.ItemsSource = movies;
+			//apiData.ItemsSource = searchResults;
+
+			//Movie movie = new Movie();
+			//movie.Title = node.Attributes["Title"].Value;
+			//movie.Year = node.Attributes["Year"].Value;
+			//movie.imdbID = node.Attributes["imdbID"].Value;
+			//movie.Type = node.Attributes["Type"].Value;
+			//movie.Poster = node.Attributes["Poster"].Value;
 
 
 
-        }
+		}
 
 
 
