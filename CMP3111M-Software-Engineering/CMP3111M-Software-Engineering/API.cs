@@ -2,11 +2,11 @@
 	This file deals with accessing the OMDB API through an API class and storing movie data through a movie class. 
 
 	Movie class:
-		The Movie class is used for storing data on a Movie. It has the following data, all as strings: Title, Year, imdbID, Type, Poster.
+		The Movie class is used for storing data on a Movie. It has the following data, all as strings: Poster, Title, Year, imdbID, Type.
 	API class:
 	The API class holds no data but provides access to OMDB API functions.
 	These functions are as follows:
-		getSearch( searchType, userInput ) - Returns List of type Movie returned from the search 'userInput'. searchType is a string either "title" for searching by title or "id" for searching by IMDB ID. If no data is found then it will return false.
+		search(searchType, userInput) - Returns List of type Movie returned from the search 'userInput'. searchType is a string either "title" for searching by title or "id" for searching by IMDB ID. If no data is found then it will return false.
 */
 
 using System;
@@ -45,7 +45,7 @@ public class API
                     jsonString = web.DownloadString("http://www.omdbapi.com/?s=" + userInput + "&apikey=ffa0df85");
                     break;
 
-                case "IMDbID":
+                case "id":
                     jsonString = web.DownloadString("http://www.omdbapi.com/?i=" + userInput + "&apikey=ffa0df85");
                     break;
 
