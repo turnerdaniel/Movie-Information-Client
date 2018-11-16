@@ -37,30 +37,23 @@ public class API
 
         using (WebClient web = new WebClient())
         {
-            string jsonString = web.DownloadString("http://www.omdbapi.com/?s=" + "Star Wars" + "&apikey=ffa0df85");
+            string jsonString = "";
 
+            jsonString = web.DownloadString("http://www.omdbapi.com/?s=" + "Star Wars" + "&apikey=ffa0df85");
+            
             JObject json = JObject.Parse(jsonString);
 
             foreach (var result in json["Search"])
             {
                 Movie movie = new Movie();
+                movie.Poster = result["Poster"].ToString();
                 movie.Title = result["Title"].ToString();
                 movie.Year = Int32.Parse(result["Year"].ToString());
                 movie.imdbID = result["imdbID"].ToString();
                 movie.Type = result["Type"].ToString();
-                
-
-                //movie.Title = node.Attributes["Title"].Value;
-                //	movie.Year = node.Attributes["Year"].Value;
-                //	movie.imdbID = node.Attributes["imdbID"].Value;
-                //	movie.Type = node.Attributes["Type"].Value;
-                //	movie.Poster = node.Attributes["Poster"].Value;
-
                 results.Add(movie);
             }
-
         }
-
 
         return results;
 
