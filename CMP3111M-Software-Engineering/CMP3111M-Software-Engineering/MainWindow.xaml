@@ -38,7 +38,11 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                            <Image HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Source="https://www.ikea.com/PIAimages/0355482_PE547815_S5.JPG" MaxWidth="200" MaxHeight="300"  />
+                            <Image HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" MaxWidth="200" MaxHeight="300">
+                                <Image.Source>
+                                    <BitmapImage UriSource="{Binding Poster}" />
+                                </Image.Source>
+                            </Image>
                             <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                             <TextBlock Text="{Binding Year}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                             <TextBlock Text="{Binding imdbID}" HorizontalAlignment="Center" VerticalAlignment="Top"/>

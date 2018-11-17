@@ -60,19 +60,23 @@ namespace MovieDatabase
 			mov.Year = "2018";
 			mov.imdbID = "ssssss";
 			mov.Type = "2";
+            mov.Poster = "https://www.ikea.com/gb/en/images/products/ekedalen-chair-oak-ramna-light-grey__0516608_pe640444_s4.jpg";
 
 			Movie mov2 = new Movie();
 			mov2.Title = "test2";
 			mov2.Year = "2019";
 			mov2.imdbID = "tttttt";
+            mov2.Type = "3";
+            mov2.Poster = "https://www.ikea.com/gb/en/images/products/ekedalen-chair-oak-ramna-light-grey__0516608_pe640444_s4.jpg";
 
-			Movie mov3 = new Movie();
+            Movie mov3 = new Movie();
 			mov3.Title = "test";
 			mov3.Year = "2018";
 			mov3.imdbID = "ssssss";
 			mov3.Type = "2";
+            mov3.Poster = "https://www.ikea.com/gb/en/images/products/ekedalen-chair-oak-ramna-light-grey__0516608_pe640444_s4.jpg";
 
-			List<Movie> movies = new List<Movie>();
+            List<Movie> movies = new List<Movie>();
 			movies.Add(mov);
 			movies.Add(mov2);
 			movies.Add(mov3);
