@@ -26,12 +26,10 @@ namespace CMP3111M_Software_Engineering
 			
 			// The following is an example of how to use the API class
 			API api = new API();
-			List<Movie> searchResults = api.getSearch("title", "Hello World"); // searches the OMDB API for 'Hello World' and returns a List of type Movie with data
-			foreach (Movie thisMovie in searchResults)
-			{
-				MessageBox.Show(thisMovie.Title + " (" + thisMovie.Year + ") (" + thisMovie.Type + ") IMDB ID: " + thisMovie.imdbID + ", Poster URL: " + thisMovie.Poster);
-			}
-		}
+			List<Movie> searchResults = api.search("title", "Hello World");
+
+            List<Movie> idResult = api.search("id", "tt0076759");
+        }
 	}
 
 	
