@@ -38,7 +38,7 @@ public class API
 
             switch (searchType)
             {
-                case "title":
+                case "Title":
                     jsonString = web.DownloadString("http://www.omdbapi.com/?s=" + userInput + "&apikey=ffa0df85");
 
                     json = JObject.Parse(jsonString);
@@ -56,7 +56,7 @@ public class API
 
                     break;
 
-                case "id":
+                case "IMDb ID":
                     jsonString = web.DownloadString("http://www.omdbapi.com/?i=" + userInput + "&apikey=ffa0df85");
 
                     json = JObject.Parse(jsonString);
