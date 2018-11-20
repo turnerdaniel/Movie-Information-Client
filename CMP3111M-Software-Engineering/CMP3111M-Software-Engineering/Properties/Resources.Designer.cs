@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CMP3111M_Software_Engineering.Properties
+namespace MovieDatabase.Properties
 {
 
 
