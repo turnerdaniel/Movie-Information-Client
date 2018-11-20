@@ -24,9 +24,7 @@ namespace MovieDatabase
         API omdb = new API();
 		List<Movie> movies = new List<Movie>();
         public static List<Movie> wishList = new List<Movie>();
-        WishList wishListPage = new WishList();
         
-
 
         public MainWindow()
 		{
@@ -48,7 +46,6 @@ namespace MovieDatabase
         private void DeactivateWindow(Window current)
         {
             current.Hide();   
-
         }
 
             
@@ -57,7 +54,6 @@ namespace MovieDatabase
             DeactivateWindow(this);
             MainWindow homepage = new MainWindow();
             homepage.Show();
-            
         }
 
         private void WishInt(object sender, RoutedEventArgs e)
@@ -65,27 +61,15 @@ namespace MovieDatabase
             DeactivateWindow(this);
             WishList wishpage = new WishList();
             wishpage.Show();
-
         }
 
         private void AddToWish(object sender, RoutedEventArgs e)
-        {
-
-            
-            //Add to list 
+        {         
+            //Get current selection
             Movie CurrentSelection = lbMovies.SelectedItem as Movie;
 
             //Add to list 
             wishList.Add(CurrentSelection);
-
-
-            //wishListPage.lbWishList.ItemsSource = wishList;
-
-
-
-
-
-
 
 
         }

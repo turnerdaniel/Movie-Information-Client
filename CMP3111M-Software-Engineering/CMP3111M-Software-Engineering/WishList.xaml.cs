@@ -22,28 +22,18 @@ namespace MovieDatabase
     {
         public WishList()
         {
-
-
             InitializeComponent();
-            
-
-
-
-
         }
 
         private void WishListLoaded(object sender, RoutedEventArgs e)
         {
-            
-            lbWishList.ItemsSource = MainWindow.wishList;
-
+            lbWishlist.ItemsSource = MainWindow.wishList;
         }
         private void SearchInt(object sender, RoutedEventArgs e)
         {
             DeactivateWindow(this);
             MainWindow homepage = new MainWindow();
             homepage.Show();
-
         }
 
         private void WishInt(object sender, RoutedEventArgs e)
@@ -51,13 +41,11 @@ namespace MovieDatabase
             DeactivateWindow(this);
             WishList wishpage = new WishList();
             wishpage.Show();
-
         }
 
         private void DeactivateWindow(Window current)
         {
             current.Hide();
-
         }
 
 

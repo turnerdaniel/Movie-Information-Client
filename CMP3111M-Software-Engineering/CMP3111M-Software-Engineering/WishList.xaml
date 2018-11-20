@@ -1,19 +1,23 @@
 ﻿<Window x:Class="MovieDatabase.WishList"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MovieDB" Height="768" Width="1366" 
+        Title="MovieDB Wishlist" Height="672" Width="1270"
         Background="BlanchedAlmond"
         Loaded="WishListLoaded">
 
     <Grid>
-        <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="735" Margin="-4,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="232"/>
-        <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="1358"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="263*"/>
+            <ColumnDefinition Width="997*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="641" Margin="-4,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="232"/>
+        <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="1262" Grid.ColumnSpan="2" Margin="0,0,-2,0"/>
         <Rectangle Fill="#FF46B200" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="232" Margin="-4,0,0,0"/>
-        <Button Content="Search" HorizontalAlignment="Left" Height="66" Margin="10,89,0,0" VerticalAlignment="Top" Width="218" Click="SearchInt"/>
-        <Button Content="Wish List" HorizontalAlignment="Left" Height="66" Margin="10,160,0,0" VerticalAlignment="Top" Width="218" RenderTransformOrigin="0.532,2.303" Click="WishInt" />
-        <Button Content="Button" HorizontalAlignment="Left" Height="66" Margin="10,231,0,0" VerticalAlignment="Top" Width="218"/>
 
-        <ListBox x:Name="lbWishList" HorizontalAlignment="Left" Height="424" Margin="310,170,0,0" VerticalAlignment="Top" Width="969" >
+        <Button x:Name="btnGoToSearch" Content="Search" HorizontalAlignment="Left" Height="66" Margin="10,110,0,0" VerticalAlignment="Top" Width="207" Click="SearchInt"/>
+        <Button x:Name="btnGoToWishList" Content="Wish List" HorizontalAlignment="Left" Height="66" Margin="10,186,0,0" VerticalAlignment="Top" Width="207" Click="WishInt"/>
+        <Label Content="Wish List:" Grid.Column="1" Margin="0,84,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="75" Width="970" FontSize="36" HorizontalAlignment="Left"/>
+        <ListBox x:Name="lbWishlist" HorizontalAlignment="Left" Height="410" Margin="0,159,0,0" VerticalAlignment="Top" Width="970" Grid.Column="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top"/>
@@ -27,15 +31,15 @@
                                 <BitmapImage UriSource="{Binding Poster}" />
                             </Image.Source>
                         </Image>
-                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <TextBlock Text="{Binding Year}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <TextBlock Text="{Binding imdbID}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <TextBlock Text="{Binding Type}" HorizontalAlignment="center" VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" MaxWidth="200" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding Year, StringFormat='Released: {0}'}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding imdbID, StringFormat='IMDb ID: {0}'}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding Type, StringFormat='Type: {0}'}" HorizontalAlignment="center" VerticalAlignment="Top"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label x:Name="WishListTitle" Content="&#x9;Wish List: Favourites " HorizontalAlignment="Left" Height="66" Margin="479,89,0,0" VerticalAlignment="Top" Width="594" FontSize="36" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
+        <Button x:Name="btnRemoveFromWishList" Content="Remove From Wishlist" HorizontalAlignment="Left"  Margin="0,580,0,0" VerticalAlignment="Top" Width="970" Height="40" Grid.Column="1" />
     </Grid>
 
 
