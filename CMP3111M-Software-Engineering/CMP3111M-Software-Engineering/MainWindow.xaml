@@ -4,20 +4,20 @@
         Title="MovieDB" Height="672" Width="1270" 
         Background="BlanchedAlmond" >
 
-    <Grid Width="1360">
+    <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="183*"/>
-            <ColumnDefinition Width="496*"/>
+            <ColumnDefinition Width="263*"/>
+            <ColumnDefinition Width="997*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="735" Margin="-4,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="232"/>
-        <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="1358" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="641" Margin="-4,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="232"/>
+        <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="1262" Grid.ColumnSpan="2" Margin="0,0,-2,0"/>
         <Rectangle Fill="#FF46B200" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="232" Margin="-4,0,0,0"/>
         <Button x:Name="btnGoToSearch" Content="Search" HorizontalAlignment="Left" Height="66" Margin="10,110,0,0" VerticalAlignment="Top" Width="207"/>
         <Button x:Name="btnGoToWishList" Content="Wish List" HorizontalAlignment="Left" Height="66" Margin="10,186,0,0" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.532,2.303"/>
-        <TextBox x:Name="SearchBar" HorizontalAlignment="Left" Height="40" Margin="105,110,0,0" TextWrapping="Wrap" Text="Enter Search Here..." VerticalAlignment="Top" Width="518" FontSize="20" Grid.Column="1" />
-        <Button x:Name="searchDb"  Content="Search" HorizontalAlignment="Left" Margin="628,110,0,0" VerticalAlignment="Top" Width="86" Height="40" Click="Search_OnClick" Grid.Column="1"/>
+        <TextBox x:Name="SearchBar" HorizontalAlignment="Left" Height="40" Margin="208,110,0,0" TextWrapping="Wrap" Text="Enter Search Here..." VerticalAlignment="Top" Width="518" FontSize="20" Grid.Column="1" />
+        <Button x:Name="searchDb"  Content="Search" HorizontalAlignment="Left" Margin="732,110,0,0" VerticalAlignment="Top" Width="86" Height="40" Click="Search_OnClick" Grid.Column="1"/>
 
-        <ListBox x:Name="lbMovies" HorizontalAlignment="Left" Height="400" Margin="260,159,0,0" VerticalAlignment="Top" Width="970" Grid.ColumnSpan="2">
+        <ListBox x:Name="lbMovies" HorizontalAlignment="Left" Height="400" Margin="3,159,0,0" VerticalAlignment="Top" Width="970" Grid.Column="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top"/>
@@ -39,11 +39,11 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ComboBox x:Name="cmbSearchType" HorizontalAlignment="Left" Margin="260,110,0,0" VerticalAlignment="Top" Width="206" Height="40" FontSize="20" Grid.ColumnSpan="2">
+        <ComboBox x:Name="cmbSearchType" HorizontalAlignment="Left" Margin="3,110,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" Grid.Column="1">
             <ComboBoxItem Content="Title" HorizontalAlignment="Left" Width="204" FontSize="20"/>
             <ComboBoxItem Content="IMDb ID" HorizontalAlignment="Left" Width="204" FontSize="20"/>
         </ComboBox>
-        <Button x:Name="btnAddToWishList" Grid.ColumnSpan="2" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="260,569,0,0" VerticalAlignment="Top" Width="970" Height="40"/>
+        <Button x:Name="btnAddToWishList" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="3,569,0,0" VerticalAlignment="Top" Width="970" Height="40" Grid.Column="1"/>
     </Grid>
 
 
