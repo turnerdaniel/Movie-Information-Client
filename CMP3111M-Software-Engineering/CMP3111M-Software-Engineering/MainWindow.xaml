@@ -44,18 +44,6 @@
         </ComboBox>
         <Button x:Name="btnAddToWishList" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="0,580,0,0" VerticalAlignment="Top" Width="970" Height="40" Grid.Column="1"/>
     </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
 </Window>
     
 
