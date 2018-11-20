@@ -31,9 +31,8 @@ namespace MovieDatabase
         public void Search_OnClick(object sender,RoutedEventArgs e)
         {
 			string searchType = cmbSearchType.Text;
+			//reset movie output
 			lbMovies.ItemsSource = "";
-			
-
 
 			movies = omdb.search(searchType, SearchBar.Text);
 
