@@ -16,7 +16,6 @@
         <Button x:Name="btnGoToWishList" Content="Wish List" HorizontalAlignment="Left" Height="66" Margin="10,186,0,0" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.532,2.303"/>
         <TextBox x:Name="SearchBar" HorizontalAlignment="Left" Height="40" Margin="208,110,0,0" TextWrapping="Wrap" Text="Enter Search Here..." VerticalAlignment="Top" Width="518" FontSize="20" Grid.Column="1" />
         <Button x:Name="searchDb"  Content="Search" HorizontalAlignment="Left" Margin="732,110,0,0" VerticalAlignment="Top" Width="86" Height="40" Click="Search_OnClick" Grid.Column="1"/>
-
         <ListBox x:Name="lbMovies" HorizontalAlignment="Left" Height="400" Margin="3,159,0,0" VerticalAlignment="Top" Width="970" Grid.Column="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -31,7 +30,7 @@
                                 <BitmapImage UriSource="{Binding Poster}" />
                             </Image.Source>
                         </Image>
-                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" MaxWidth="200" TextWrapping="Wrap" />
                         <TextBlock Text="{Binding Year, StringFormat='Released: {0}'}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         <TextBlock Text="{Binding imdbID, StringFormat='IMDb ID: {0}'}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         <TextBlock Text="{Binding Type, StringFormat='Type: {0}'}" HorizontalAlignment="center" VerticalAlignment="Top"/>
