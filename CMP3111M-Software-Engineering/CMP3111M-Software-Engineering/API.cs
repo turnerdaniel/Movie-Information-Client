@@ -24,7 +24,7 @@ public class Movie // the movie class for containing information about a movie
 
 public class API
 {
-    //Default Constructor
+  //Default Constructor
 	public API() {}
 
 	public List<Movie> search(string searchType, string userInput)
