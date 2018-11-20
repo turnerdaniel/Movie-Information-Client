@@ -31,7 +31,7 @@
                                 <BitmapImage UriSource="{Binding Poster}" />
                             </Image.Source>
                         </Image>
-                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
                         <TextBlock Text="{Binding Year, StringFormat='Released: {0}'}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         <TextBlock Text="{Binding imdbID, StringFormat='IMDb ID: {0}'}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         <TextBlock Text="{Binding Type, StringFormat='Type: {0}'}" HorizontalAlignment="center" VerticalAlignment="Top"/>
