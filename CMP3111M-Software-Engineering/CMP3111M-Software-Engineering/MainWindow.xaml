@@ -17,8 +17,8 @@
         <Button Content="Search" HorizontalAlignment="Left" Height="66" Margin="10,89,0,0" VerticalAlignment="Top" Width="218"/>
         <Button Content="Wish List" HorizontalAlignment="Left" Height="66" Margin="10,160,0,0" VerticalAlignment="Top" Width="218" RenderTransformOrigin="0.532,2.303"/>
         <Button Content="Button" HorizontalAlignment="Left" Height="66" Margin="10,231,0,0" VerticalAlignment="Top" Width="218"/>
-        <TextBox x:Name="SearchBar" HorizontalAlignment="Left" Height="40" Margin="525,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="518"/>
-        <Button x:Name="searchDb"  Content="Button" HorizontalAlignment="Left" Margin="1043,115,0,0" VerticalAlignment="Top" Width="85" Height="40" Click="Search_OnClick"/>
+        <TextBox x:Name="SearchBar" HorizontalAlignment="Left" Height="40" Margin="525,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="518" FontSize="20"/>
+        <Button x:Name="searchDb"  Content="Search" HorizontalAlignment="Left" Margin="1048,115,0,0" VerticalAlignment="Top" Width="85" Height="40" Click="Search_OnClick"/>
 
 
         <Grid>
@@ -52,6 +52,10 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <ComboBox x:Name="cmbSearchType" HorizontalAlignment="Left" Margin="310,115,0,0" VerticalAlignment="Top" Width="206" Height="40" FontSize="20">
+                <ComboBoxItem Content="Title" HorizontalAlignment="Left" Width="204" FontSize="20"/>
+                <ComboBoxItem Content="IMDb ID" HorizontalAlignment="Left" Width="204" FontSize="20"/>
+            </ComboBox>
 
 
 
