@@ -40,10 +40,15 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ComboBox x:Name="cmbSearchType" HorizontalAlignment="Left" Margin="0,110,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" Grid.Column="1">
-            <ComboBoxItem Content="Title" HorizontalAlignment="Left" Width="204" FontSize="20"/>
-            <ComboBoxItem Content="IMDb ID" HorizontalAlignment="Left" Width="204" FontSize="20"/>
+        <ComboBox x:Name="cmbSearchType" HorizontalAlignment="Left" Margin="0,110,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" Grid.Column="1" >
+            <ComboBoxItem Content="Title" IsSelected="True" HorizontalAlignment="Left" Width="204" FontSize="20"/>
+            <ComboBoxItem Content="IMDb ID" HorizontalAlignment="Left" Width="204" FontSize="20"></ComboBoxItem>
+  
+            
         </ComboBox>
+
+        
+        
         <Button x:Name="btnAddToWishList" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="0,580,0,0" VerticalAlignment="Top" Width="970" Height="40" Grid.Column="1" Click="AddToWish"/>
         <ComboBox x:Name="cmbDatabase" Grid.Column="1" HorizontalAlignment="Left" Margin="833,110,0,0" VerticalAlignment="Top" Width="137" Height="40" FontSize="20">
             <ComboBoxItem Content="OMDB" IsSelected="True" HorizontalAlignment="Left" Width="135" FontSize="20"/>

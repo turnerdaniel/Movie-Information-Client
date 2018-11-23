@@ -50,6 +50,7 @@ namespace MovieDatabase
                 movies = tmdb.search(searchType, SearchBar.Text);
 
             lbMovies.ItemsSource = movies;
+
 		}
 
 
@@ -124,5 +125,11 @@ namespace MovieDatabase
             }
             return results;
         }
+
+        
+
+       
+
+        
     }
 }
