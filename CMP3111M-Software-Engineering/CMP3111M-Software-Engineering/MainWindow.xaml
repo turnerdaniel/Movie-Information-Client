@@ -16,9 +16,10 @@
 
         <Button x:Name="btnGoToSearch" Content="Search" HorizontalAlignment="Left" Height="66" Margin="10,110,0,0" VerticalAlignment="Top" Width="207" Click="SearchInt"/>
         <Button x:Name="btnGoToWishList" Content="Wish List" HorizontalAlignment="Left" Height="66" Margin="10,186,0,0" VerticalAlignment="Top" Width="207" Click="WishInt"/>
-        
-        <TextBox x:Name="SearchBar" HorizontalAlignment="Left" Height="40" Margin="205,110,0,0" TextWrapping="Wrap" Text="Enter Search Here..." VerticalAlignment="Top" Width="518" FontSize="20" Grid.Column="1" />
-        <Button x:Name="searchDb"  Content="Search" HorizontalAlignment="Left" Margin="730,110,0,0" VerticalAlignment="Top" Width="86" Height="40" Click="Search_OnClick" Grid.Column="1"/>
+
+        <TextBox x:Name="SearchBar"  HorizontalAlignment="Left" Height="40" Margin="205,110,0,0" TextWrapping="Wrap" Text="Enter Search Here..." VerticalAlignment="Top" Width="518" FontSize="20" Grid.Column="1" IsReadOnly="True"
+         />
+        <Button x:Name="searchDb"  Content="Search" HorizontalAlignment="Left" Margin="730,110,0,0" VerticalAlignment="Top" Width="86" Height="40"  Grid.Column="1"/>
         <ListBox x:Name="lbMovies" HorizontalAlignment="Left" Height="410" Margin="0,159,0,0" VerticalAlignment="Top" Width="970" Grid.Column="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -41,11 +42,21 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ComboBox x:Name="cmbSearchType" HorizontalAlignment="Left" Margin="0,110,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" Grid.Column="1">
-            <ComboBoxItem Content="Title" HorizontalAlignment="Left" Width="204" FontSize="20"/>
-            <ComboBoxItem Content="IMDb ID" HorizontalAlignment="Left" Width="204" FontSize="20"/>
+        <ComboBox x:Name="cmbSearchType" HorizontalAlignment="Left" Margin="0,110,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" Grid.Column="1" >
+            <ComboBoxItem Content="Title" IsSelected="True" HorizontalAlignment="Left" Width="204" FontSize="20"/>
+            <ComboBoxItem Content="IMDb ID" HorizontalAlignment="Left" Width="204" FontSize="20"></ComboBoxItem>
+  
+            
         </ComboBox>
+
+        
+        
         <Button x:Name="btnAddToWishList" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="0,580,0,0" VerticalAlignment="Top" Width="970" Height="40" Grid.Column="1" Click="AddToWish"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="833,110,0,0" VerticalAlignment="Top" Width="137" Height="40">
+            <ComboBoxItem Content="OMDB" HorizontalAlignment="Left" Width="135"/>
+            <ComboBoxItem Content="TMDB" HorizontalAlignment="Left" Width="135"/>
+            
+        </ComboBox>
     </Grid>
 </Window>
     

@@ -46,6 +46,7 @@ namespace MovieDatabase
 			movies = omdb.search(searchType, SearchBar.Text);
 
 			lbMovies.ItemsSource = movies;
+
 		}
 
 
@@ -120,5 +121,11 @@ namespace MovieDatabase
             }
             return results;
         }
+
+        
+
+       
+
+        
     }
 }
