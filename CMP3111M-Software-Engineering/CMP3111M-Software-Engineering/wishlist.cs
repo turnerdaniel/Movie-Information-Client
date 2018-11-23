@@ -23,7 +23,7 @@ public class Wishlist
         {
             List<Movie> results = new List<Movie>();
 
-            API api = new API(); // create API instance to search the database by ID
+            OMDB api = new OMDB(); // create API instance to search the database by ID
 
             using (StreamReader sr = File.OpenText("wishlist.txt"))
             {

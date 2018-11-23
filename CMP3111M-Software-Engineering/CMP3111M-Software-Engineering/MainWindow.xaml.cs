@@ -22,7 +22,8 @@ namespace MovieDatabase
     
     public partial class MainWindow : Window
 	{
-        API omdb = new API();
+        OMDB omdb = new OMDB();
+        TMDB tmdb = new TMDB();
 		List<Movie> movies = new List<Movie>();
         public static List<Movie> wishList = new List<Movie>();
         
@@ -43,9 +44,12 @@ namespace MovieDatabase
 			//reset movie output
 			lbMovies.ItemsSource = "";
 
-			movies = omdb.search(searchType, SearchBar.Text);
+            if (cmbDatabase.Text == "OMDB")
+			    movies = omdb.search(searchType, SearchBar.Text);
+            if (cmbDatabase.Text == "TMDB")
+                movies = tmdb.search(searchType, SearchBar.Text);
 
-			lbMovies.ItemsSource = movies;
+            lbMovies.ItemsSource = movies;
 		}
 
 
