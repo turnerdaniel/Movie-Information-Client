@@ -39,7 +39,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="btnRemoveFromWishList" Content="Remove From Wishlist" HorizontalAlignment="Left"  Margin="0,580,0,0" VerticalAlignment="Top" Width="970" Height="40" Grid.Column="1" />
+        <Button x:Name="btnRemoveFromWishList" Content="Remove From Wishlist" HorizontalAlignment="Left"  Margin="0,580,0,0" VerticalAlignment="Top" Width="970" Height="40" Grid.Column="1" Click="removeFromWish"/>
     </Grid>
 
 

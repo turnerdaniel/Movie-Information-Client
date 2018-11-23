@@ -48,6 +48,17 @@ namespace MovieDatabase
             current.Hide();
         }
 
+        private void removeFromWish(object sender, RoutedEventArgs e)
+        {
+            //Get current selection
+            Movie CurrentSelection = lbWishlist.SelectedItem as Movie;
+
+            MainWindow.wishList.Remove(CurrentSelection);
+
+            lbWishlist.ItemsSource = "";
+            lbWishlist.ItemsSource = MainWindow.wishList;
+        }
+
 
     }
 }

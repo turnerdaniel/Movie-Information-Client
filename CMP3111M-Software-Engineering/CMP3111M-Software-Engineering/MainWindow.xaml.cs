@@ -70,8 +70,6 @@ namespace MovieDatabase
 
             //Add to list 
             wishList.Add(CurrentSelection);
-
-
         }
     }
 }
