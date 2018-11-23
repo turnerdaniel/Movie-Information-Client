@@ -18,11 +18,36 @@ namespace MovieDatabase
     /// <summary>
     /// Interaction logic for WishList.xaml
     /// </summary>
-    public partial class WishList : Page
+    public partial class WishList : Window
     {
         public WishList()
         {
-            
+            InitializeComponent();
         }
+
+        private void WishListLoaded(object sender, RoutedEventArgs e)
+        {
+            lbWishlist.ItemsSource = MainWindow.wishList;
+        }
+        private void SearchInt(object sender, RoutedEventArgs e)
+        {
+            DeactivateWindow(this);
+            MainWindow homepage = new MainWindow();
+            homepage.Show();
+        }
+
+        private void WishInt(object sender, RoutedEventArgs e)
+        {
+            DeactivateWindow(this);
+            WishList wishpage = new WishList();
+            wishpage.Show();
+        }
+
+        private void DeactivateWindow(Window current)
+        {
+            current.Hide();
+        }
+
+
     }
 }
