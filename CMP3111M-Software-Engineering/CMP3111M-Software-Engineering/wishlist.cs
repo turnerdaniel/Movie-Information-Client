@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows;
 
-public class wishlist 
+public class Wishlist 
     {
 
         /* This class deals with the wishlist.
           Wishlists are saved as list of IMDB IDs to prevent issues with multiple films with the same title and detail updates 
           The functions contained within the wishlist object are as follows:
 
-            getWishlist() - Returns a list of type Movie with all movies currently in the wishlist
-            addWishlist(string imdbID) - Checks if a movie already exists in the wishlist and if not adds a movie of imdbID to the wishlist. Displays "already in wishlist" if film is already in the wishlist.
-            boolean isWishlist(string imdbID) - Checks if a movie is already in the wishlist and returns a bool.
+            List<Movie> get() - Returns a list of type Movie with all movies currently in the wishlist
+            void add(string imdbID) - Checks if a movie already exists in the wishlist and if not adds a movie of imdbID to the wishlist. Displays "already in wishlist" if film is already in the wishlist.
+            boolean check(string imdbID) - Checks if a movie is already in the wishlist and returns a bool.
          
          */
 
-        public List<Movie> getWishlist()
+        public List<Movie> get()
         {
             List<Movie> results = new List<Movie>();
 
-            API api = new API(); // create API instance to search the database by ID
+            OMDB api = new OMDB(); // create API instance to search the database by ID
 
             using (StreamReader sr = File.OpenText("wishlist.txt"))
             {
@@ -41,9 +41,9 @@ public class wishlist
             return results;
         }
 
-        public void addWishlist(string id)
+        public void add(string id)
         {
-            if (!isWishlist(id))
+            if (!check(id))
             {
                 using (StreamWriter w = File.AppendText("wishlist.txt"))
                 {
@@ -55,17 +55,16 @@ public class wishlist
             }
         }
 
-        public bool isWishlist(string id)
+        public bool check(string id)
         {
             bool result = false;
-            foreach (var tMov in getWishlist())
+            foreach (var tMov in get())
             {
                 if (tMov.imdbID == id)
                 {
                   result = true;
                 }
             }
-
             return result;
         }
  

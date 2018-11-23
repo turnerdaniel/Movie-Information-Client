@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,8 @@ namespace MovieDatabase
     
     public partial class MainWindow : Window
 	{
-        API omdb = new API();
+        OMDB omdb = new OMDB();
+        TMDB tmdb = new TMDB();
 		List<Movie> movies = new List<Movie>();
         public static List<Movie> wishList = new List<Movie>();
         
@@ -31,15 +33,23 @@ namespace MovieDatabase
             InitializeComponent();
         }
 
-        public void Search_OnClick(object sender,RoutedEventArgs e)
+        private void MainWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            wishList = read();
+        }
+
+        private void Search_OnClick(object sender,RoutedEventArgs e)
         {
 			string searchType = cmbSearchType.Text;
 			//reset movie output
 			lbMovies.ItemsSource = "";
 
-			movies = omdb.search(searchType, SearchBar.Text);
+            if (cmbDatabase.Text == "OMDB")
+			    movies = omdb.search(searchType, SearchBar.Text);
+            if (cmbDatabase.Text == "TMDB")
+                movies = tmdb.search(searchType, SearchBar.Text);
 
-			lbMovies.ItemsSource = movies;
+            lbMovies.ItemsSource = movies;
 
 		}
 
@@ -68,11 +78,57 @@ namespace MovieDatabase
         {         
             //Get current selection
             Movie CurrentSelection = lbMovies.SelectedItem as Movie;
+            bool exists = false;
 
-            //Add to list 
-            wishList.Add(CurrentSelection);
+            foreach(Movie mov in wishList)
+            {
+                if (mov.imdbID == CurrentSelection.imdbID)
+                {
+                    MessageBox.Show("You already have this movie in your wishlist");
+                    exists = true;
+                }
+            }
 
+            if (exists == false)
+            {
+                //Add to list 
+                wishList.Add(CurrentSelection);
+                write(wishList);
+            }
+        }
 
+        private void write(List<Movie> wish)
+        {
+            using (StreamWriter w = new StreamWriter("wishlist.txt", false))
+            {
+                foreach (Movie mov in wish)
+                {
+                    w.WriteLine(mov.imdbID);
+                }
+            }
+        }
+
+        private List<Movie> read()
+        {
+            List<Movie> results = new List<Movie>();
+
+            if (File.Exists("wishlist.txt"))
+            {
+                using (StreamReader sr = File.OpenText("wishlist.txt"))
+                {
+                    string s;
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        List<Movie> wish = new List<Movie>();
+                        wish = omdb.search("IMDb ID", s);
+                        if (wish.Count != 0) // check for empty set
+                        {
+                            results.Add(wish[0]); // add the first result from searching the ID
+                        }
+                    }
+                }
+            }
+            return results;
         }
 
         private void Random_Id(object sender, RoutedEventArgs e)
