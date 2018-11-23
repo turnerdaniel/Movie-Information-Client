@@ -91,7 +91,7 @@ namespace MovieDatabase
             Console.WriteLine(random_seed);
 
 
-            movies = omdb.search("IMDb ID", "tt" + "0" + random_seed);
+            movies = omdb.search("IMDb ID", "tt" + "0" + random_string);
 
             lbMovies.ItemsSource = movies;
 
