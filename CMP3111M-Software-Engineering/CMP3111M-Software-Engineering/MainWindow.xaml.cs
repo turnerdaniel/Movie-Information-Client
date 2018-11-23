@@ -74,13 +74,16 @@ namespace MovieDatabase
             //Get current selection
             Movie CurrentSelection = lbMovies.SelectedItem as Movie;
 
-            if (wishList.Contains(CurrentSelection))
-                MessageBox.Show("You already have this movie in your wishlist");
-            else
+            foreach(Movie mov in wishList)
             {
-                //Add to list 
-                wishList.Add(CurrentSelection);
-                write(wishList);
+                if(mov.imdbID == CurrentSelection.imdbID)
+                    MessageBox.Show("You already have this movie in your wishlist");
+                else
+                {
+                    //Add to list 
+                    wishList.Add(CurrentSelection);
+                    write(wishList);
+                }
             }
         }
 
