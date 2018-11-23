@@ -87,12 +87,13 @@ namespace MovieDatabase
                     MessageBox.Show("You already have this movie in your wishlist");
                     exists = true;
                 }
-                if (exists == false)
-                {
-                    //Add to list 
-                    wishList.Add(CurrentSelection);
-                    write(wishList);
-                }
+            }
+
+            if (exists == false)
+            {
+                //Add to list 
+                wishList.Add(CurrentSelection);
+                write(wishList);
             }
         }
 
