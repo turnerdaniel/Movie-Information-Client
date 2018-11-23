@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,10 +54,19 @@ namespace MovieDatabase
             //Get current selection
             Movie CurrentSelection = lbWishlist.SelectedItem as Movie;
 
+            //Remove item from list
             MainWindow.wishList.Remove(CurrentSelection);
+            removeFromFile(CurrentSelection);
 
             lbWishlist.ItemsSource = "";
             lbWishlist.ItemsSource = MainWindow.wishList;
+        }
+
+        private void removeFromFile(Movie mov)
+        {
+            List<string> file = File.ReadAllLines("wishlist.txt").ToList();
+            file.Remove(mov.imdbID);          
+            File.WriteAllLines("wishlist.txt", file.ToArray());
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,12 @@ namespace MovieDatabase
             InitializeComponent();
         }
 
-        public void Search_OnClick(object sender,RoutedEventArgs e)
+        private void MainWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            wishList = read();
+        }
+
+        private void Search_OnClick(object sender,RoutedEventArgs e)
         {
 			string searchType = cmbSearchType.Text;
 			//reset movie output
@@ -68,8 +74,48 @@ namespace MovieDatabase
             //Get current selection
             Movie CurrentSelection = lbMovies.SelectedItem as Movie;
 
-            //Add to list 
-            wishList.Add(CurrentSelection);
+            if (wishList.Contains(CurrentSelection))
+                MessageBox.Show("You already have this movie in your wishlist");
+            else
+            {
+                //Add to list 
+                wishList.Add(CurrentSelection);
+                write(wishList);
+            }
+        }
+
+        private void write(List<Movie> wish)
+        {
+            using (StreamWriter w = new StreamWriter("wishlist.txt", false))
+            {
+                foreach (Movie mov in wish)
+                {
+                    w.WriteLine(mov.imdbID);
+                }
+            }
+        }
+
+        private List<Movie> read()
+        {
+            List<Movie> results = new List<Movie>();
+
+            if (File.Exists("wishlist.txt"))
+            {
+                using (StreamReader sr = File.OpenText("wishlist.txt"))
+                {
+                    string s;
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        List<Movie> wish = new List<Movie>();
+                        wish = omdb.search("IMDb ID", s);
+                        if (wish.Count != 0) // check for empty set
+                        {
+                            results.Add(wish[0]); // add the first result from searching the ID
+                        }
+                    }
+                }
+            }
+            return results;
         }
     }
 }
