@@ -75,10 +75,27 @@ namespace MovieDatabase
 
         }
 
-        
+        private void Random_Id(object sender, RoutedEventArgs e)
+        {
+            
+            //reset movie output
+            lbMovies.ItemsSource = "";
 
-       
+            
 
-        
+            Random rng = new Random();
+
+            int random_seed = rng.Next(0100000, 0500000);
+            string random_string = random_seed.ToString();
+
+            Console.WriteLine(random_seed);
+
+
+            movies = omdb.search("IMDb ID", "tt" + "0" + random_seed);
+
+            lbMovies.ItemsSource = movies;
+
+            
+        }
     }
 }

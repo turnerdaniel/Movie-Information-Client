@@ -44,18 +44,23 @@
         <ComboBox x:Name="cmbSearchType" HorizontalAlignment="Left" Margin="0,110,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" Grid.Column="1" >
             <ComboBoxItem Content="Title" IsSelected="True" HorizontalAlignment="Left" Width="204" FontSize="20"/>
             <ComboBoxItem Content="IMDb ID" HorizontalAlignment="Left" Width="204" FontSize="20"></ComboBoxItem>
-  
-            
+
+
         </ComboBox>
 
-        
-        
-        <Button x:Name="btnAddToWishList" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="0,580,0,0" VerticalAlignment="Top" Width="970" Height="40" Grid.Column="1" Click="AddToWish"/>
+
+
+
+        <Button x:Name="btnAddToWishList" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="0,580,0,0" VerticalAlignment="Top" Width="460" Height="51" Grid.Column="1" Click="AddToWish"/>
+
+
+
         <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="833,110,0,0" VerticalAlignment="Top" Width="137" Height="40">
             <ComboBoxItem Content="OMDB" HorizontalAlignment="Left" Width="135"/>
             <ComboBoxItem Content="TMDB" HorizontalAlignment="Left" Width="135"/>
-            
+
         </ComboBox>
+        <Button Content="Random" Grid.Column="1" HorizontalAlignment="Left" Margin="492,580,0,0" VerticalAlignment="Top" Width="478" Height="51" Click="Random_Id"/>
     </Grid>
 </Window>
     
