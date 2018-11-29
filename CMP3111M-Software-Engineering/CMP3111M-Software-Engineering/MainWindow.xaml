@@ -50,7 +50,7 @@
 
 
         <Button x:Name="btnAddToWishList" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="0,580,0,0" VerticalAlignment="Top" Width="723" Height="40" Grid.Column="1" Click="AddToWish"/>
-        <ComboBox x:Name="cmbDatabase" Grid.Column="1" HorizontalAlignment="Left" Margin="821,110,0,0" VerticalAlignment="Top" Width="149" Height="40" FontSize="20">
+        <ComboBox x:Name="cmbDatabase" Grid.Column="1" HorizontalAlignment="Left" Margin="823,110,0,0" VerticalAlignment="Top" Width="147" Height="40" FontSize="20">
             <ComboBoxItem Content="OMDB" IsSelected="True" HorizontalAlignment="Left" Width="149" FontSize="20" Margin="0,0,-2,0"/>
             <ComboBoxItem Content="TMDB" HorizontalAlignment="Left" Width="149" FontSize="20" Margin="0,0,-2,0"/>
 
