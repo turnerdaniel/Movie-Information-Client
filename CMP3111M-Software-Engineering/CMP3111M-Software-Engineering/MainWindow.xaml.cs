@@ -1,29 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MovieDatabase
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    
-    public partial class MainWindow : Window
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+
+	public partial class MainWindow : Window
 	{
-        OMDB omdb = new OMDB();
-        TMDB tmdb = new TMDB();
+		APIFactory apiFactory = new ConcreteAPIFactory();
+		IAPI api;
 		List<Movie> movies = new List<Movie>();
         public static List<Movie> wishList = new List<Movie>();
         
@@ -31,7 +20,7 @@ namespace MovieDatabase
         public MainWindow()
 		{
             InitializeComponent();
-        }
+		}
 
         private void MainWindowLoaded(object sender, RoutedEventArgs e)
         {
@@ -44,12 +33,18 @@ namespace MovieDatabase
 			//reset movie output
 			lbMovies.ItemsSource = "";
 
-            if (cmbDatabase.Text == "OMDB")
-			    movies = omdb.search(searchType, SearchBar.Text);
-            if (cmbDatabase.Text == "TMDB")
-                movies = tmdb.search(searchType, SearchBar.Text);
+			if (cmbDatabase.Text == "OMDB")
+			{
+				api = apiFactory.createAPI(cmbDatabase.Text);
+				movies = api.search(searchType, SearchBar.Text);
+			}
+			if (cmbDatabase.Text == "TMDB")
+			{
+				api = apiFactory.createAPI(cmbDatabase.Text);
+				movies = api.search(searchType, SearchBar.Text);
+			}
 
-            lbMovies.ItemsSource = movies;
+			lbMovies.ItemsSource = movies;
 
 		}
 
@@ -80,21 +75,25 @@ namespace MovieDatabase
             Movie CurrentSelection = lbMovies.SelectedItem as Movie;
             bool exists = false;
 
-            foreach(Movie mov in wishList)
-            {
-                if (mov.imdbID == CurrentSelection.imdbID)
-                {
-                    MessageBox.Show("You already have this movie in your wishlist");
-                    exists = true;
-                }
-            }
+			if (CurrentSelection != null)
+			{
+				foreach (Movie mov in wishList)
+				{
+					if (mov.imdbID == CurrentSelection.imdbID)
+					{
+						MessageBox.Show("You already have this movie in your wishlist");
+						exists = true;
+					}
+				}
 
-            if (exists == false)
-            {
-                //Add to list 
-                wishList.Add(CurrentSelection);
-                write(wishList);
-            }
+				if (exists == false)
+				{
+					//Add to list 
+					wishList.Add(CurrentSelection);
+					write(wishList);
+
+				}
+			}
         }
 
         private void write(List<Movie> wish)
@@ -120,7 +119,10 @@ namespace MovieDatabase
                     while ((s = sr.ReadLine()) != null)
                     {
                         List<Movie> wish = new List<Movie>();
-                        wish = omdb.search("IMDb ID", s);
+
+						api = apiFactory.createAPI("OMDB");
+						wish = api.search("IMDb ID", s);
+
                         if (wish.Count != 0) // check for empty set
                         {
                             results.Add(wish[0]); // add the first result from searching the ID
@@ -137,8 +139,6 @@ namespace MovieDatabase
             //reset movie output
             lbMovies.ItemsSource = "";
 
-            
-
             Random rng = new Random();
 
             int random_seed = rng.Next(0100000, 0500000);
@@ -146,10 +146,10 @@ namespace MovieDatabase
 
             Console.WriteLine(random_seed);
 
+			api = apiFactory.createAPI("OMDB");
+			movies = api.search("IMDb ID", "tt" + "0" + random_string);
 
-            movies = omdb.search("IMDb ID", "tt" + "0" + random_string);
-
-            lbMovies.ItemsSource = movies;
+			lbMovies.ItemsSource = movies;
 
             
         }

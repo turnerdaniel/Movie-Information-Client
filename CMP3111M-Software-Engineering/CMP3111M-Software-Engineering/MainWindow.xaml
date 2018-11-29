@@ -14,8 +14,8 @@
         <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="1262" Grid.ColumnSpan="2" Margin="0,0,-2,0"/>
         <Rectangle Fill="#FF46B200" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="232" Margin="-4,0,0,0"/>
 
-        <Button x:Name="btnGoToSearch" Content="Search" HorizontalAlignment="Left" Height="66" Margin="10,110,0,0" VerticalAlignment="Top" Width="207" Click="SearchInt"/>
-        <Button x:Name="btnGoToWishList" Content="Wish List" HorizontalAlignment="Left" Height="66" Margin="10,186,0,0" VerticalAlignment="Top" Width="207" Click="WishInt"/>
+        <Button x:Name="btnGoToSearch" Content="Search Window" HorizontalAlignment="Left" Height="66" Margin="10,110,0,0" VerticalAlignment="Top" Width="207" Click="SearchInt"/>
+        <Button x:Name="btnGoToWishList" Content="Wish List Window" HorizontalAlignment="Left" Height="66" Margin="10,186,0,0" VerticalAlignment="Top" Width="207" Click="WishInt"/>
         <TextBox x:Name="SearchBar"  HorizontalAlignment="Left" Height="40" Margin="205,110,0,0" TextWrapping="Wrap" Text="Enter Search Here..." VerticalAlignment="Top" Width="518" FontSize="20" Grid.Column="1" />
         <Button x:Name="searchDb"  Content="Search" HorizontalAlignment="Left" Margin="730,110,0,0" VerticalAlignment="Top" Width="86" Height="40"  Grid.Column="1" Click="Search_OnClick"/>
         <ListBox x:Name="lbMovies" HorizontalAlignment="Left" Height="410" Margin="0,159,0,0" VerticalAlignment="Top" Width="970" Grid.Column="1">
@@ -48,14 +48,14 @@
         </ComboBox>
 
 
-        
-        <Button x:Name="btnAddToWishList" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="0,580,0,0" VerticalAlignment="Top" Width="970" Height="40" Grid.Column="1" Click="AddToWish"/>
-        <ComboBox x:Name="cmbDatabase" Grid.Column="1" HorizontalAlignment="Left" Margin="833,110,0,0" VerticalAlignment="Top" Width="137" Height="40" FontSize="20">
-            <ComboBoxItem Content="OMDB" IsSelected="True" HorizontalAlignment="Left" Width="135" FontSize="20"/>
-            <ComboBoxItem Content="TMDB" HorizontalAlignment="Left" Width="135" FontSize="20"/>
+
+        <Button x:Name="btnAddToWishList" Content="Add To Wishlist" HorizontalAlignment="Left" Margin="0,580,0,0" VerticalAlignment="Top" Width="723" Height="40" Grid.Column="1" Click="AddToWish"/>
+        <ComboBox x:Name="cmbDatabase" Grid.Column="1" HorizontalAlignment="Left" Margin="823,110,0,0" VerticalAlignment="Top" Width="147" Height="40" FontSize="20">
+            <ComboBoxItem Content="OMDB" IsSelected="True" HorizontalAlignment="Left" Width="149" FontSize="20" Margin="0,0,-2,0"/>
+            <ComboBoxItem Content="TMDB" HorizontalAlignment="Left" Width="149" FontSize="20" Margin="0,0,-2,0"/>
 
         </ComboBox>
-        <Button Content="Random" Grid.Column="1" HorizontalAlignment="Left" Margin="492,580,0,0" VerticalAlignment="Top" Width="478" Height="51" Click="Random_Id"/>
+        <Button Content="Random Movie" Grid.Column="1" HorizontalAlignment="Left" Margin="730,580,0,0" VerticalAlignment="Top" Width="240" Height="40" Click="Random_Id"/>
     </Grid>
 </Window>
     

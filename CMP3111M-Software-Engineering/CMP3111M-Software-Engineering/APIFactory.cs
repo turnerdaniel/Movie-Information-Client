@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MovieDatabase
 {
-	public interface IAPI
+	abstract class APIFactory
 	{
-		List<Movie> search(string searchType, string userInput);
+		public abstract IAPI createAPI(string apiName);
 	}
 }

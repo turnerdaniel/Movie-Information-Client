@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MovieDatabase
 {
-    /// <summary>
-    /// Interaction logic for WishList.xaml
-    /// </summary>
-    public partial class WishList : Window
+	/// <summary>
+	/// Interaction logic for WishList.xaml
+	/// </summary>
+	public partial class WishList : Window
     {
         public WishList()
         {
@@ -56,7 +45,8 @@ namespace MovieDatabase
 
             //Remove item from list
             MainWindow.wishList.Remove(CurrentSelection);
-            removeFromFile(CurrentSelection);
+			if (CurrentSelection != null)
+				removeFromFile(CurrentSelection);
 
             lbWishlist.ItemsSource = "";
             lbWishlist.ItemsSource = MainWindow.wishList;
@@ -64,6 +54,7 @@ namespace MovieDatabase
 
         private void removeFromFile(Movie mov)
         {
+
             List<string> file = File.ReadAllLines("wishlist.txt").ToList();
             file.Remove(mov.imdbID);          
             File.WriteAllLines("wishlist.txt", file.ToArray());
