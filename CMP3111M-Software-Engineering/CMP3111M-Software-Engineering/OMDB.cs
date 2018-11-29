@@ -4,7 +4,7 @@ using System.Net;
 
 namespace MovieDatabase
 {
-	public class OMDB
+	class OMDB : IAPI
 	{
 		//Default Constructor
 		public OMDB() { }

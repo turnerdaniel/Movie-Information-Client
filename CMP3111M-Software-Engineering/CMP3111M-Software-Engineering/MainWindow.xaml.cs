@@ -11,8 +11,9 @@ namespace MovieDatabase
 
 	public partial class MainWindow : Window
 	{
-        OMDB omdb = new OMDB();
-        TMDB tmdb = new TMDB();
+		APIFactory apiFactory = new APIFactory();
+		IAPI omdb;
+		IAPI tmdb;
 		List<Movie> movies = new List<Movie>();
         public static List<Movie> wishList = new List<Movie>();
         
@@ -20,7 +21,11 @@ namespace MovieDatabase
         public MainWindow()
 		{
             InitializeComponent();
-        }
+
+
+			omdb = apiFactory.createAPI("OMDB");
+			tmdb = apiFactory.createAPI("TMDB");
+		}
 
         private void MainWindowLoaded(object sender, RoutedEventArgs e)
         {

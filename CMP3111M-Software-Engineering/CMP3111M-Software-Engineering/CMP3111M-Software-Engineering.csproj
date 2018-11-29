@@ -62,7 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API.cs" />
     <Compile Include="APIFactory.cs" />
+    <Compile Include="ConcreteAPIFactory.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="OMDB.cs" />
     <Compile Include="TMDB.cs" />

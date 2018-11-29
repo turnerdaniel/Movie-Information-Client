@@ -4,8 +4,9 @@ using System.Net;
 
 namespace MovieDatabase
 {
-	class TMDB
+	class TMDB : IAPI
 	{
+		//Default Constructor
 		public TMDB() { }
 
 		public List<Movie> search(string searchType, string userInput)
