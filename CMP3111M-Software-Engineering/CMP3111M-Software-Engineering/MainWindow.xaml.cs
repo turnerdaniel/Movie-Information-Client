@@ -86,9 +86,12 @@ namespace MovieDatabase
 
             if (exists == false)
             {
-                //Add to list 
-                wishList.Add(CurrentSelection);
-                write(wishList);
+				//Add to list 
+				if (CurrentSelection != null)
+				{
+					wishList.Add(CurrentSelection);
+					write(wishList);
+				}
             }
         }
 

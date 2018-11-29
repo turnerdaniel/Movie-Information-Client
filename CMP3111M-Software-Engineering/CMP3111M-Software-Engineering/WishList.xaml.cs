@@ -45,7 +45,8 @@ namespace MovieDatabase
 
             //Remove item from list
             MainWindow.wishList.Remove(CurrentSelection);
-            removeFromFile(CurrentSelection);
+			if (CurrentSelection != null)
+				removeFromFile(CurrentSelection);
 
             lbWishlist.ItemsSource = "";
             lbWishlist.ItemsSource = MainWindow.wishList;
@@ -53,6 +54,7 @@ namespace MovieDatabase
 
         private void removeFromFile(Movie mov)
         {
+
             List<string> file = File.ReadAllLines("wishlist.txt").ToList();
             file.Remove(mov.imdbID);          
             File.WriteAllLines("wishlist.txt", file.ToArray());
