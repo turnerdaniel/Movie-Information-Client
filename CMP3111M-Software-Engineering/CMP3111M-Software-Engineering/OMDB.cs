@@ -65,6 +65,10 @@ namespace MovieDatabase
 				{
 					MessageBox.Show("No movies were returned using this criteria.\nDid you enter the Movie or ID correctly?");
 				}
+				catch (WebException)
+				{
+					MessageBox.Show("No movies were returned using this criteria.\nDid you enter the Movie or ID correctly?");
+				}
 			}
 			return results;
 		}

@@ -14,8 +14,8 @@
         <Rectangle Fill="#FFA8FF71" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="1262" Grid.ColumnSpan="2" Margin="0,0,-2,0"/>
         <Rectangle Fill="#FF46B200" HorizontalAlignment="Left" Height="84" Stroke="Black" VerticalAlignment="Top" Width="232" Margin="-4,0,0,0"/>
 
-        <Button x:Name="btnGoToSearch" Content="Search" HorizontalAlignment="Left" Height="66" Margin="10,110,0,0" VerticalAlignment="Top" Width="207" Click="SearchInt"/>
-        <Button x:Name="btnGoToWishList" Content="Wish List" HorizontalAlignment="Left" Height="66" Margin="10,186,0,0" VerticalAlignment="Top" Width="207" Click="WishInt"/>
+        <Button x:Name="btnGoToSearch" Content="Search Window" HorizontalAlignment="Left" Height="66" Margin="10,110,0,0" VerticalAlignment="Top" Width="207" Click="SearchInt"/>
+        <Button x:Name="btnGoToWishList" Content="Wish List Window" HorizontalAlignment="Left" Height="66" Margin="10,186,0,0" VerticalAlignment="Top" Width="207" Click="WishInt"/>
         <Label Content="Wish List:" Grid.Column="1" Margin="0,84,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="75" Width="970" FontSize="36" HorizontalAlignment="Left"/>
         <ListBox x:Name="lbWishlist" HorizontalAlignment="Left" Height="410" Margin="0,159,0,0" VerticalAlignment="Top" Width="970" Grid.Column="1">
             <ListBox.ItemsPanel>
