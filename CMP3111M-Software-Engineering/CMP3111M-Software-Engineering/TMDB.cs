@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Windows;
@@ -72,6 +73,10 @@ namespace MovieDatabase
 					}
 				}
 				catch(WebException)
+				{
+					MessageBox.Show("No movies were returned using this criteria.\nDid you enter the Movie or ID correctly?");
+				}
+				catch (NullReferenceException)
 				{
 					MessageBox.Show("No movies were returned using this criteria.\nDid you enter the Movie or ID correctly?");
 				}
