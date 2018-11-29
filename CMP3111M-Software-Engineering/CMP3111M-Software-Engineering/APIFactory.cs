@@ -6,19 +6,8 @@ using System.Threading.Tasks;
 
 namespace MovieDatabase
 {
-	class APIFactory
+	abstract class APIFactory
 	{
-		public IAPI createAPI(string apiName)
-		{
-			switch (apiName)
-			{
-				case "OMDB":
-					return new OMDB();
-				case "TMDB":
-					return new TMDB();
-				default:
-					throw new ApplicationException("The " + apiName + "API cannot be created");
-			}
-		}
-		}
+		public abstract IAPI createAPI(string apiName);
+	}
 }

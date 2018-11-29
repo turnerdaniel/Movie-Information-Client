@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieDatabase
-{ 
-	//class ConcreteAPIFactory : APIFactory
-	//{
-	//public override IAPI createAPI(string apiName)
-	//	{
-	//		switch (apiName)
-	//		{
-	//			case "OMDB":
-	//				return new OMDB();
-	//			case "TMDB":
-	//				return new TMDB();
-	//			default:
-	//				throw new ApplicationException("The " + apiName + "API cannot be created");
-	//		}
-	//	}
-	//}
+{
+	class ConcreteAPIFactory : APIFactory
+	{
+		public override IAPI createAPI(string apiName)
+		{
+			switch (apiName)
+			{
+				case "OMDB":
+					return new OMDB();
+				case "TMDB":
+					return new TMDB();
+				default:
+					throw new ApplicationException("The " + apiName + "API cannot be created");
+			}
+		}
+	}
 }

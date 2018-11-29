@@ -11,7 +11,7 @@ namespace MovieDatabase
 
 	public partial class MainWindow : Window
 	{
-		APIFactory apiFactory = new APIFactory();
+		APIFactory apiFactory = new ConcreteAPIFactory();
 		IAPI api;
 		List<Movie> movies = new List<Movie>();
         public static List<Movie> wishList = new List<Movie>();
