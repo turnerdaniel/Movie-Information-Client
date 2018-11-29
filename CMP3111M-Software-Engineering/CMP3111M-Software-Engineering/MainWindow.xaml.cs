@@ -12,8 +12,7 @@ namespace MovieDatabase
 	public partial class MainWindow : Window
 	{
 		APIFactory apiFactory = new APIFactory();
-		IAPI omdb;
-		IAPI tmdb;
+		IAPI api;
 		List<Movie> movies = new List<Movie>();
         public static List<Movie> wishList = new List<Movie>();
         
@@ -21,10 +20,6 @@ namespace MovieDatabase
         public MainWindow()
 		{
             InitializeComponent();
-
-
-			omdb = apiFactory.createAPI("OMDB");
-			tmdb = apiFactory.createAPI("TMDB");
 		}
 
         private void MainWindowLoaded(object sender, RoutedEventArgs e)
@@ -38,12 +33,18 @@ namespace MovieDatabase
 			//reset movie output
 			lbMovies.ItemsSource = "";
 
-            if (cmbDatabase.Text == "OMDB")
-			    movies = omdb.search(searchType, SearchBar.Text);
-            if (cmbDatabase.Text == "TMDB")
-                movies = tmdb.search(searchType, SearchBar.Text);
+			if (cmbDatabase.Text == "OMDB")
+			{
+				api = apiFactory.createAPI(cmbDatabase.Text);
+				movies = api.search(searchType, SearchBar.Text);
+			}
+			if (cmbDatabase.Text == "TMDB")
+			{
+				api = apiFactory.createAPI(cmbDatabase.Text);
+				movies = api.search(searchType, SearchBar.Text);
+			}
 
-            lbMovies.ItemsSource = movies;
+			lbMovies.ItemsSource = movies;
 
 		}
 
@@ -114,7 +115,10 @@ namespace MovieDatabase
                     while ((s = sr.ReadLine()) != null)
                     {
                         List<Movie> wish = new List<Movie>();
-                        wish = omdb.search("IMDb ID", s);
+
+						api = apiFactory.createAPI("OMDB");
+						wish = api.search("IMDb ID", s);
+
                         if (wish.Count != 0) // check for empty set
                         {
                             results.Add(wish[0]); // add the first result from searching the ID
@@ -131,8 +135,6 @@ namespace MovieDatabase
             //reset movie output
             lbMovies.ItemsSource = "";
 
-            
-
             Random rng = new Random();
 
             int random_seed = rng.Next(0100000, 0500000);
@@ -140,10 +142,10 @@ namespace MovieDatabase
 
             Console.WriteLine(random_seed);
 
+			api = apiFactory.createAPI("OMDB");
+			movies = api.search("IMDb ID", "tt" + "0" + random_string);
 
-            movies = omdb.search("IMDb ID", "tt" + "0" + random_string);
-
-            lbMovies.ItemsSource = movies;
+			lbMovies.ItemsSource = movies;
 
             
         }
