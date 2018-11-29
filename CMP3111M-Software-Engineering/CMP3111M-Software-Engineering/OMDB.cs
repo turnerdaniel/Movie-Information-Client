@@ -63,7 +63,7 @@ namespace MovieDatabase
 				}
 				catch (NullReferenceException)
 				{
-					MessageBox.Show("There was an error performing this operation.\nDid you enter the Movie or ID correctly?");
+					MessageBox.Show("No movies were returned using this criteria.\nDid you enter the Movie or ID correctly?");
 				}
 			}
 			return results;
