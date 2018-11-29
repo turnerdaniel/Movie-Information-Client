@@ -1,147 +1,133 @@
-﻿/*
-	This file deals with accessing the OMDB API through an API class and storing movie data through a movie class. 
+﻿
+//public class Movie // the movie class for containing information about a movie
+//{
+//    public string Poster { get; set; } //image URL (.jpg)
+//    public string Title { get; set; }
+//    public string Year { get; set; } //string because some dates are ranges
+//    public string imdbID { get; set; } //format: tt1234567
+//    public string Type { get; set; }
+//}
 
-	Movie class:
-		The Movie class is used for storing data on a Movie. It has the following data, all as strings: Poster, Title, Year, imdbID, Type.
-	API class:
-	The API class holds no data but provides access to OMDB API functions.
-	These functions are as follows:
-		search(searchType, userInput) - Returns List of type Movie returned from the search 'userInput'. searchType is a string either "title" for searching by title or "id" for searching by IMDB ID. If no data is found then it will return false.
-*/
+//public class OMDB
+//{
+//  //Default Constructor
+//	public OMDB() {}
 
-using System.Net;
-using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
+//	public List<Movie> search(string searchType, string userInput)
+//	{
+//		List<Movie> results = new List<Movie>();
 
-public class Movie // the movie class for containing information about a movie
-{
-    public string Poster { get; set; } //image URL (.jpg)
-    public string Title { get; set; }
-    public string Year { get; set; } //string because some dates are ranges
-    public string imdbID { get; set; } //format: tt1234567
-    public string Type { get; set; }
-}
+//        using (WebClient web = new WebClient())
+//        {
+//            string jsonString = "";
+//            JObject json;
 
-public class OMDB
-{
-  //Default Constructor
-	public OMDB() {}
+//            switch (searchType)
+//            {
+//                case "Title":
+//                    jsonString = web.DownloadString("http://www.omdbapi.com/?s=" + userInput + "&apikey=ffa0df85");
 
-	public List<Movie> search(string searchType, string userInput)
-	{
-		List<Movie> results = new List<Movie>();
+//                    json = JObject.Parse(jsonString);
 
-        using (WebClient web = new WebClient())
-        {
-            string jsonString = "";
-            JObject json;
+//                    foreach (var result in json["Search"])
+//                    {
+//                        Movie movTitle = new Movie();
+//                        movTitle.Poster = result["Poster"].ToString();
+//                        movTitle.Title = result["Title"].ToString();
+//                        movTitle.Year = result["Year"].ToString();
+//                        movTitle.imdbID = result["imdbID"].ToString();
+//                        movTitle.Type = result["Type"].ToString();
+//                        results.Add(movTitle);
+//                    }
 
-            switch (searchType)
-            {
-                case "Title":
-                    jsonString = web.DownloadString("http://www.omdbapi.com/?s=" + userInput + "&apikey=ffa0df85");
+//                    break;
 
-                    json = JObject.Parse(jsonString);
+//                case "IMDb ID":
+//                    jsonString = web.DownloadString("http://www.omdbapi.com/?i=" + userInput + "&apikey=ffa0df85");
 
-                    foreach (var result in json["Search"])
-                    {
-                        Movie movTitle = new Movie();
-                        movTitle.Poster = result["Poster"].ToString();
-                        movTitle.Title = result["Title"].ToString();
-                        movTitle.Year = result["Year"].ToString();
-                        movTitle.imdbID = result["imdbID"].ToString();
-                        movTitle.Type = result["Type"].ToString();
-                        results.Add(movTitle);
-                    }
+//                    json = JObject.Parse(jsonString);
 
-                    break;
+//                    Movie movID = new Movie();
+//                    movID.Poster = json["Poster"].ToString();
+//                    movID.Title = json["Title"].ToString();
+//                    movID.Year = json["Year"].ToString();
+//                    movID.imdbID = json["imdbID"].ToString();
+//                    movID.Type = json["Type"].ToString();
+//                    results.Add(movID);
+//                    break;
 
-                case "IMDb ID":
-                    jsonString = web.DownloadString("http://www.omdbapi.com/?i=" + userInput + "&apikey=ffa0df85");
+//                default:
+//                    //error
+//                    break;
+//            }
+//        }
+//        return results;
+//	}
+//}
 
-                    json = JObject.Parse(jsonString);
+//public class TMDB
+//{
+//    public TMDB() { }
 
-                    Movie movID = new Movie();
-                    movID.Poster = json["Poster"].ToString();
-                    movID.Title = json["Title"].ToString();
-                    movID.Year = json["Year"].ToString();
-                    movID.imdbID = json["imdbID"].ToString();
-                    movID.Type = json["Type"].ToString();
-                    results.Add(movID);
-                    break;
+//    public List<Movie> search(string searchType, string userInput)
+//    {
+//        List<Movie> results = new List<Movie>();
 
-                default:
-                    //error
-                    break;
-            }
-        }
-        return results;
-	}
-}
+//        using (WebClient web = new WebClient())
+//        {
+//            string jsonString = "";
+//            JObject json;
+//            JObject idResponse;
 
-public class TMDB
-{
-    public TMDB() { }
+//            switch (searchType)
+//            {
+//                case "Title":
+//                    jsonString = web.DownloadString("https://api.themoviedb.org/3/search/movie?api_key=ce3d10763b9e4dc46748c25948f710bc&query=" + userInput + "&page=1");
 
-    public List<Movie> search(string searchType, string userInput)
-    {
-        List<Movie> results = new List<Movie>();
+//                    json = JObject.Parse(jsonString);
 
-        using (WebClient web = new WebClient())
-        {
-            string jsonString = "";
-            JObject json;
-            JObject idResponse;
+//                    foreach (var result in json["results"])
+//                    {
+//                        Movie movTitle = new Movie();
+//                        movTitle.Poster = "https://image.tmdb.org/t/p/w200" + result["poster_path"].ToString();
+//                        movTitle.Title = result["title"].ToString();
+//                        movTitle.Year = result["release_date"].ToString();
 
-            switch (searchType)
-            {
-                case "Title":
-                    jsonString = web.DownloadString("https://api.themoviedb.org/3/search/movie?api_key=ce3d10763b9e4dc46748c25948f710bc&query=" + userInput + "&page=1");
-
-                    json = JObject.Parse(jsonString);
-
-                    foreach (var result in json["results"])
-                    {
-                        Movie movTitle = new Movie();
-                        movTitle.Poster = "https://image.tmdb.org/t/p/w200" + result["poster_path"].ToString();
-                        movTitle.Title = result["title"].ToString();
-                        movTitle.Year = result["release_date"].ToString();
-
-                        string tmdbID = result["id"].ToString();
-                        string jsonTMDB = web.DownloadString("https://api.themoviedb.org/3/movie/" + tmdbID + "?api_key=ce3d10763b9e4dc46748c25948f710bc");
-                        idResponse = JObject.Parse(jsonTMDB);
-                        movTitle.imdbID = idResponse["imdb_id"].ToString();
+//                        string tmdbID = result["id"].ToString();
+//                        string jsonTMDB = web.DownloadString("https://api.themoviedb.org/3/movie/" + tmdbID + "?api_key=ce3d10763b9e4dc46748c25948f710bc");
+//                        idResponse = JObject.Parse(jsonTMDB);
+//                        movTitle.imdbID = idResponse["imdb_id"].ToString();
 
 
-                        movTitle.Type = "Movie";
-                        results.Add(movTitle);
-                    }
+//                        movTitle.Type = "Movie";
+//                        results.Add(movTitle);
+//                    }
 
-                    break;
+//                    break;
 
-                case "IMDb ID":
-                    jsonString = web.DownloadString("https://api.themoviedb.org/3/find/" + userInput + "?api_key=ce3d10763b9e4dc46748c25948f710bc&external_source=imdb_id");
+//                case "IMDb ID":
+//                    jsonString = web.DownloadString("https://api.themoviedb.org/3/find/" + userInput + "?api_key=ce3d10763b9e4dc46748c25948f710bc&external_source=imdb_id");
 
-                    json = JObject.Parse(jsonString);
+//                    json = JObject.Parse(jsonString);
 
-                    foreach (var result in json["movie_results"])
-                    {
-                        Movie movID = new Movie();
-                        movID.Poster = "https://image.tmdb.org/t/p/w200" + result["poster_path"].ToString();
-                        movID.Title = result["title"].ToString();
-                        movID.Year = result["release_date"].ToString();
-                        movID.imdbID = userInput;
-                        movID.Type = "Movie";
-                        results.Add(movID);
-                    }
+//                    foreach (var result in json["movie_results"])
+//                    {
+//                        Movie movID = new Movie();
+//                        movID.Poster = "https://image.tmdb.org/t/p/w200" + result["poster_path"].ToString();
+//                        movID.Title = result["title"].ToString();
+//                        movID.Year = result["release_date"].ToString();
+//                        movID.imdbID = userInput;
+//                        movID.Type = "Movie";
+//                        results.Add(movID);
+//                    }
 
-                    break;
+//                    break;
 
-                default:
-                    //error
-                    break;
-            }
-        }
-        return results;
-    }
-}
+//                default:
+//                    //error
+//                    break;
+//            }
+//        }
+//        return results;
+//    }
+//}
