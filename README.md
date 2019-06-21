@@ -6,6 +6,12 @@ A standalone desktop client that allows the user to search for movies and TV sho
 
 This project was developed using Visual Studio, so that is the easiest way to view the software. The latest release is available to download [here](https://visualstudio.microsoft.com/).
 
+Aftewards, simply run:
+```bash
+git clone https://github.com/turnerdaniel/Movie-Information-Client
+```
+to access the project.
+
 However, you are able to compile the C# files yourself if you wish. 
 
 ## Usage
