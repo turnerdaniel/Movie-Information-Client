@@ -12,7 +12,7 @@ git clone https://github.com/turnerdaniel/Movie-Information-Client
 ```
 to access the project.
 
-However, you are able to compile the C# files yourself if you wish. 
+You are also able to compile the C# files yourself if you wish. 
 
 ## Usage
 
